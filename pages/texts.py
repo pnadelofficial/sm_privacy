@@ -46,6 +46,7 @@ df, sents = load_data()
 @st.cache_resource
 def load_google_sheet():
     gc = gspread.service_account_from_dict(CREDS)
+    gc = gspread.service_account_from_dict(CREDS)
     return gc.open('francophone-social-media-coding').sheet1
 fb = load_google_sheet()
 
@@ -59,5 +60,5 @@ for i, sent in enumerate(law_sents):
     parent = st.selectbox('Pick parent code', KWS.keys(), key=i)
     child = st.selectbox('Pick child code', KWS[parent], key=f"{i}_c")
     if st.button('Submit to sheet', key=f"{i}_b"):
-        fb.append_row([name, country_choice, sent, parent, child])
+        fb.append_row([name, country_choice, sent, parent, child], table_range="A1:Q1")
     st.divider()
