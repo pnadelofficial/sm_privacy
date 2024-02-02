@@ -60,3 +60,4 @@ for i, sent in enumerate(law_sents):
     child = st.selectbox('Pick child code', KWS[parent], key=f"{i}_c")
     if st.button('Submit to sheet', key=f"{i}_b"):
         fb.append_row([name, country_choice, sent, parent, child])
+    st.divider()
