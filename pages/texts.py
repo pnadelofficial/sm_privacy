@@ -31,6 +31,9 @@ KWS = {
         "gouvernement",
         "organisation",
         "entité"
+    ],
+    "No code":[
+        "No code"
     ]
 }
 
