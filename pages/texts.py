@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import gspread
-from google.oauth2.service_account import Credentials
 
 CREDS = st.secrets['gsp_secrets']['my_project_settings']
 KWS = {
@@ -55,7 +54,7 @@ fb = load_google_sheet()
 
 country_choice = st.selectbox("Pick a country", df.Country)
 country_idx = df[df['Country'] == country_choice.strip()].index.item()
-law_sents = sents[sents.org_idx == country_idx].law
+law_sents = sents[sents.org_idx == country_idx].sample(30, random_state=1337).law
 st.divider()
 
 for i, sent in enumerate(law_sents):
